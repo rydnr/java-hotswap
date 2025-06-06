@@ -16,10 +16,18 @@ import java.util.Objects;
  * and resource updates.
  */
 public class Reloader {
+    private static final int DEFAULT_PORT = 62345;
+
     private final Instrumentation instrumentation;
+    private final int port;
 
     public Reloader(Instrumentation instrumentation) {
+        this(instrumentation, DEFAULT_PORT);
+    }
+
+    public Reloader(Instrumentation instrumentation, int port) {
         this.instrumentation = Objects.requireNonNull(instrumentation);
+        this.port = port <= 0 ? DEFAULT_PORT : port;
     }
 
     /** Starts the reloader and opens a server socket for commands. */
@@ -30,7 +38,7 @@ public class Reloader {
     }
 
     private void runServer() {
-        try (ServerSocket server = new ServerSocket(62345)) {
+        try (ServerSocket server = new ServerSocket(port)) {
             while (true) {
                 try (Socket socket = server.accept();
                      BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));

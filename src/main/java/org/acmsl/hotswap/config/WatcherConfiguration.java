@@ -9,6 +9,7 @@ import org.yaml.snakeyaml.Yaml;
 
 /** Parses YAML configuration describing folders to watch. */
 public class WatcherConfiguration {
+    private int port;
     private List<FolderWatch> folders;
 
     public List<FolderWatch> getFolders() {
@@ -17,6 +18,14 @@ public class WatcherConfiguration {
 
     public void setFolders(List<FolderWatch> folders) {
         this.folders = folders;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
     }
 
     /** Load configuration from a YAML file. */

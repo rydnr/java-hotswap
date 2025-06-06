@@ -8,23 +8,13 @@ This repository aims to build a command-line tool capable of reloading changed c
 
 See [docs/design.md](docs/design.md) for the architecture sketch, proof-of-concept checklist and growth plan.
 
-## Command Line Interface
+## Usage
 
-Run the CLI to manually trigger reloads:
-
-```
-java -cp <jar-with-dependencies> org.acmsl.hotswap.cli.ReloadCLI
-```
-
-The following commands are available:
-
-* `reload <class-name> <class-file>` – redefine a loaded class with the supplied class file bytes.
-* `quit` – exit the CLI.
-
-For example:
+Attach the agent and provide a YAML configuration file using the `hsconfig` system property:
 
 ```
-> reload com.example.MyService target/classes/com/example/MyService.class
-> quit
+java -javaagent:java-hotswap.jar -Dhsconfig=/path/to/config.yml -cp <classpath> com.example.Main
 ```
+
+The YAML file may specify a `port` field to change the server socket (defaults to `62345`) and a list of folders to watch (unused for now).
 
