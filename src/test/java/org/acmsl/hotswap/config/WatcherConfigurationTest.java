@@ -12,6 +12,7 @@ public class WatcherConfigurationTest {
     @Test
     public void parsesFoldersAndIntervals() throws Exception {
         String yaml = """
+        port: 6000
         folders:
           - path: /tmp/foo
             interval: 1000
@@ -23,6 +24,7 @@ public class WatcherConfigurationTest {
 
         WatcherConfiguration config = WatcherConfiguration.load(file);
         assertNotNull(config);
+        assertEquals(6000, config.getPort());
         List<FolderWatch> folders = config.getFolders();
         assertEquals(2, folders.size());
         assertEquals("/tmp/foo", folders.get(0).getPath());
