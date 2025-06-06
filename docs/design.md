@@ -79,7 +79,7 @@ These experiments verify that runtime redefinition works and that the pipeline f
    - Set up a CI pipeline (GitHub Actions) for build and release automation.
 
 6. **Licensing & Packaging**
-   - Define a permissive license for open-source usage while reserving rights for premium features.
+   - Use the [GNU General Public License version 3](https://www.gnu.org/licenses/gpl-3.0.txt) for the open-source components while reserving rights for premium features.
    - Publish artifacts to Maven Central for easy consumption.
 
 7. **Polished Product**

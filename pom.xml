@@ -9,8 +9,8 @@
   <inceptionYear>2025</inceptionYear>
   <licenses>
     <license>
-      <name>GPL</name>
-      <url>http://www.fsf.org/licensing/licenses/gpl.html</url>
+      <name>GNU General Public License v3.0</name>
+      <url>https://www.gnu.org/licenses/gpl-3.0.txt</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
