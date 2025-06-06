@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.acmsl</groupId>
+  <artifactId>java-hotswap</artifactId>
+  <packaging>jar</packaging>
+  <version>latest-SNAPSHOT</version>
+  <name>Java HotSwap</name>
+  <inceptionYear>2025</inceptionYear>
+  <licenses>
+    <license>
+      <name>GPL</name>
+      <url>http://www.fsf.org/licensing/licenses/gpl.html</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>net.bytebuddy</groupId>
+      <artifactId>byte-buddy</artifactId>
+      <version>1.14.1</version>
+    </dependency>
+  </dependencies>
+  <!--parent>
+    <groupId>org.acmsl</groupId>
+    <artifactId>acmsl-pom</artifactId>
+    <version>latest-SNAPSHOT</version>
+  </parent-->
+</project>
