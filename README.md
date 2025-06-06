@@ -8,3 +8,23 @@ This repository aims to build a command-line tool capable of reloading changed c
 
 See [docs/design.md](docs/design.md) for the architecture sketch, proof-of-concept checklist and growth plan.
 
+## Command Line Interface
+
+Run the CLI to manually trigger reloads:
+
+```
+java -cp <jar-with-dependencies> org.acmsl.hotswap.cli.ReloadCLI
+```
+
+The following commands are available:
+
+* `reload <class-name> <class-file>` – redefine a loaded class with the supplied class file bytes.
+* `quit` – exit the CLI.
+
+For example:
+
+```
+> reload com.example.MyService target/classes/com/example/MyService.class
+> quit
+```
+
