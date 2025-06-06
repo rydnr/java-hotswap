@@ -14,9 +14,15 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-  <!--parent>
-    <groupId>org.acmsl</groupId>
-    <artifactId>acmsl-pom</artifactId>
-    <version>latest-SNAPSHOT</version>
-  </parent-->
+  <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>net.bytebuddy</groupId>
+      <artifactId>byte-buddy</artifactId>
+      <version>1.14.1</version>
+    </dependency>
+  </dependencies>
 </project>
