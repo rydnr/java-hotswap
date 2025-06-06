@@ -1,7 +1,13 @@
 package org.acmsl.hotswap.reloader;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.lang.instrument.ClassDefinition;
 import java.lang.instrument.Instrumentation;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.Objects;
 
 /**
@@ -16,9 +22,33 @@ public class Reloader {
         this.instrumentation = Objects.requireNonNull(instrumentation);
     }
 
-    /** Starts the reloader. Placeholder for future logic. */
+    /** Starts the reloader and opens a server socket for commands. */
     public void start() {
-        // In a full implementation, register triggers or file watchers here
+        Thread thread = new Thread(this::runServer, "hotswap-server");
+        thread.setDaemon(true);
+        thread.start();
+    }
+
+    private void runServer() {
+        try (ServerSocket server = new ServerSocket(62345)) {
+            while (true) {
+                try (Socket socket = server.accept();
+                     BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                     PrintWriter writer = new PrintWriter(socket.getOutputStream(), true)) {
+                    String line = reader.readLine();
+                    if (line != null && line.startsWith("refresh ")) {
+                        writer.println("OK");
+                    } else {
+                        writer.println("ERROR");
+                    }
+                } catch (IOException ignored) {
+                    // continue accepting new connections
+                }
+            }
+        } catch (IOException e) {
+            // Fail fast if the server cannot start
+            throw new RuntimeException("Failed to start server", e);
+        }
     }
 
     /**
